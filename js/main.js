@@ -56,6 +56,9 @@ for (let i = 0; i < photo.length; i++) {
     ${photo[i]['text']}
   </div>`
 }
+document.getElementById("my-after-carousel").innerHTML+=`
+<button class="btn btn-primary" id="reverse">Inverti</button>
+`
 document.getElementById("Milano").classList.remove("d-none");
 document.getElementById("Milano-thumb").classList.remove("opacity-75");
 document.getElementById("Milano-text").classList.remove("d-none");
@@ -63,42 +66,62 @@ document.getElementById("Milano-text").classList.remove("d-none");
 
 const prev=document.querySelector(".my-prev-hook");
 const next=document.querySelector(".my-next-hook");
-console.log(prev);
-console.log(next);
+const reverse=document.getElementById("reverse");
 
 let counter=0;
-next.addEventListener('click', function () {
-  if (counter==photo.length-1) {
-    counter=photo.length-1;
-    addClass(photo, counter);
-    counter=0;
-    removeClass(photo,counter);
-  }
-  else{
-    addClass(photo, counter);
-    counter++;
-    removeClass(photo,counter);
-  }
-})
-prev.addEventListener('click', function () {
-  if (counter==0) {
-    counter=0;
-    addClass(photo, counter);
-    counter=photo.length-1;
-    removeClass(photo,counter);
-  }
-  else{
-    addClass(photo, counter);
-    counter--;
-    removeClass(photo,counter);
-  }
-})
+let towards=next;
 
+// added functionality to the next button
+next.addEventListener('click', function () {
+  counter=nextFunc(photo,counter);
+})
+// added functionality to the prev button
+prev.addEventListener('click', function () {
+  counter=prevFunc(photo,counter)
+})
+reverse.addEventListener('click',function(){
+  towards=prev;
+})
+// to simulate the click
+setInterval(()=>{towards.click()},5000);
+
+function nextFunc(photoTemporary, counterTemporary){
+  if (counterTemporary==photoTemporary.length-1) {
+    counterTemporary=photoTemporary.length-1;
+    addClass(photoTemporary, counterTemporary);
+    counterTemporary=0;
+    removeClass(photoTemporary,counterTemporary);
+  }
+  else{
+    addClass(photoTemporary, counterTemporary);
+    counterTemporary++;
+    removeClass(photoTemporary,counterTemporary);
+  }
+  return counterTemporary;
+}
+
+function prevFunc(photoTemporary, counterTemporary){
+  if (counterTemporary==0) {
+    counterTemporary=0;
+    addClass(photoTemporary, counterTemporary);
+    counterTemporary=photoTemporary.length-1;
+    removeClass(photoTemporary,counterTemporary);
+  }
+  else{
+    addClass(photoTemporary, counterTemporary);
+    counterTemporary--;
+    removeClass(photoTemporary,counterTemporary);
+  }
+  return counterTemporary;
+}
+
+// function to add classes
 function addClass(photoTemp, counterTemp){
   document.getElementById(photoTemp[counterTemp]['name']).classList.add("d-none");
   document.getElementById(`${photoTemp[counterTemp]['name']}-thumb`).classList.add("opacity-75");
   document.getElementById(`${photoTemp[counterTemp]['name']}-text`).classList.add("d-none");
 }
+// function to remove classes
 function removeClass(photoTemp, counterTemp){
   document.getElementById(photoTemp[counterTemp]['name']).classList.remove("d-none");
   document.getElementById(`${photoTemp[counterTemp]['name']}-thumb`).classList.remove("opacity-75");

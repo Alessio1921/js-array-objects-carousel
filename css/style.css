@@ -8,7 +8,6 @@ div.my-carousel-container{
 }
 
 div.my-carousel-images{
-    background-color: cadetblue;
     min-height: 520px;
 }
 
@@ -62,7 +61,7 @@ div.my-carousel-images img{
     height: 520px;
 }
 .text-img{
-    bottom: 0;
+    bottom: 10%;
     right: 30%;
     font-weight: bold;
     background-color: rgba(0, 0, 0, .5);
