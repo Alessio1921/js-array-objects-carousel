@@ -49,7 +49,7 @@ for (let i = 0; i < photo.length; i++) {
   document.querySelector(".my-carousel-images").innerHTML+=`
   <img src="${photo[i]['image']}" class=" position-relative d-none" id="${photo[i]['name']}" alt="${photo[i]['name']}"></img>`
   document.querySelector(".my-thumbnails").innerHTML+=`
-  <img src="${photo[i]['image']}" class="opacity-75" id="${photo[i]['name']}-thumb" alt="${photo[i]['name']}"></img>`
+  <img src="${photo[i]['image']}" class="opacity-50" id="${photo[i]['name']}-thumb" alt="${photo[i]['name']}"></img>`
   document.querySelector(".my-carousel-images").innerHTML+=`
   <div class="position-absolute text-img d-none" id="${photo[i]['name']}-text"> 
     ${photo[i]['name']}<br>
@@ -60,7 +60,7 @@ document.getElementById("my-after-carousel").innerHTML+=`
 <button class="btn btn-primary" id="reverse">Inverti</button>
 `
 document.getElementById("Milano").classList.remove("d-none");
-document.getElementById("Milano-thumb").classList.remove("opacity-75");
+document.getElementById("Milano-thumb").classList.remove("opacity-50");
 document.getElementById("Milano-text").classList.remove("d-none");
 
 
@@ -118,12 +118,12 @@ function prevFunc(photoTemporary, counterTemporary){
 // function to add classes
 function addClass(photoTemp, counterTemp){
   document.getElementById(photoTemp[counterTemp]['name']).classList.add("d-none");
-  document.getElementById(`${photoTemp[counterTemp]['name']}-thumb`).classList.add("opacity-75");
+  document.getElementById(`${photoTemp[counterTemp]['name']}-thumb`).classList.add("opacity-50");
   document.getElementById(`${photoTemp[counterTemp]['name']}-text`).classList.add("d-none");
 }
 // function to remove classes
 function removeClass(photoTemp, counterTemp){
   document.getElementById(photoTemp[counterTemp]['name']).classList.remove("d-none");
-  document.getElementById(`${photoTemp[counterTemp]['name']}-thumb`).classList.remove("opacity-75");
+  document.getElementById(`${photoTemp[counterTemp]['name']}-thumb`).classList.remove("opacity-50");
   document.getElementById(`${photoTemp[counterTemp]['name']}-text`).classList.remove("d-none");
 }
