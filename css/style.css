@@ -62,7 +62,8 @@ div.my-carousel-images img{
 }
 .text-img{
     bottom: 10%;
-    right: 30%;
+    left: 50%;
+    transform: translateX(-50%);
     font-weight: bold;
     background-color: rgba(0, 0, 0, .5);
     color: white    ;

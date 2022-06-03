@@ -80,7 +80,7 @@ prev.addEventListener('click', function () {
   counter=prevFunc(photo,counter)
 })
 reverse.addEventListener('click',function(){
-  towards=prev;
+  (towards==next) ? towards=prev : towards=next;
 })
 // to simulate the click
 setInterval(()=>{towards.click()},5000);
